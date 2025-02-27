@@ -9,7 +9,10 @@ export default function App() {
   const [ peso , setPeso ]  = useState();
   const [ IMC , setIMC ]  = useState();
   const [ exibirIMC, setexibirIMC] = useState();
-
+  const Calcular = (peso, Altura) => {
+    resultado = peso/(Altura*Altura)
+    
+  }
 
 
   return (
@@ -17,20 +20,26 @@ export default function App() {
       <Text>Hello word</Text>
       <TextInput
           placeholder={"Digite sua altura"}
-          style={{ borderWidth: 1, height: 40, width:"100%", margin:10}}
+          style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
           onChangeText={(text) => setAltura(text)}
+        
+          
           
       />
     
   
       <TextInput
           placeholder={"Digite seu peso"}
-          style={{ borderWidth: 1, height: 40, width:"100%", margin:10}}
+          style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
           onChangeText={(text) => setPeso(text)}
           
+        
+    
       />
 
-      <Button tittle="Calcular" onPress={() => exibirIMC()} />
+      <Button title="Calcular" onPress={() => exibirIMC()}/>
+    
+<Text>{exibirIMC}</Text>
 
       <StatusBar style="auto" />
     </View>
