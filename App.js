@@ -21,11 +21,11 @@ export default function App() {
    
     }  
 
-    else if(18.5<resultado<24.9){
+    else if(resultado >= 18.5 && resultado < 24.9){
       setIMC("Peso normal");
    
     }  
-    else if(25<resultado<29.9){
+    else if(resultado >= 25 && resultado < 29){
       setIMC("Extremo peso");
    
     }  
@@ -44,10 +44,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Hello word</Text>
+    
       <TextInput
           placeholder={"Digite sua altura"}
-          style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
+          style={{ borderWidth: 2, borderRadius:20, height: 40, width:"200px", margin:20}}
           onChangeText={(Number) => setAltura(Number)}
       
       />
@@ -55,18 +55,20 @@ export default function App() {
   
       <TextInput
           placeholder={"Digite seu peso"}
-          style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
+          style={{ borderWidth: 2, borderRadius:20, height: 40, width:"200px", margin:50}}
           onChangeText={(Number) => setPeso(Number)}
           
         
     
       />
 
-      <Button title="Calcular" onPress={() => Calcular()}
+      <Button title="Calcular"
+      color="red"
+      onPress={() => Calcular()}
         
       />
 
-  <Text>{resultado}</Text>
+  <Text>{resultado.toFixed(2)}</Text>
   <Text>{IMC}</Text>
 
       <StatusBar style="auto" />
