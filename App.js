@@ -9,9 +9,36 @@ export default function App() {
   const [ peso , setPeso ]  = useState();
   const [ IMC , setIMC ]  = useState();
   const [ exibirIMC, setexibirIMC] = useState();
-  const Calcular = (peso, Altura) => {
-    resultado = peso/(Altura*Altura)
+  const [ resultado, setResultado] = useState(0);
+
+  const Calcular = () => {
+
+    setResultado(parseFloat(peso)/(parseFloat(Altura)*parseFloat(Altura)))
     
+  
+    if(resultado<18.5){
+      setIMC("Baixo peso");
+   
+    }  
+
+    else if(18.5<resultado<24.9){
+      setIMC("Peso normal");
+   
+    }  
+    else if(25<resultado<29.9){
+      setIMC("Extremo peso");
+   
+    }  
+    else if(resultado<30){
+      setIMC("Obesidade");
+   
+    }  
+    else if(resultado<35){
+      setIMC("Baleia");
+   
+    } 
+   
+
   }
 
 
@@ -21,25 +48,26 @@ export default function App() {
       <TextInput
           placeholder={"Digite sua altura"}
           style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
-          onChangeText={(text) => setAltura(text)}
-        
-          
-          
+          onChangeText={(Number) => setAltura(Number)}
+      
       />
     
   
       <TextInput
           placeholder={"Digite seu peso"}
           style={{ borderWidth: 1, height: 40, width:"200px", margin:10}}
-          onChangeText={(text) => setPeso(text)}
+          onChangeText={(Number) => setPeso(Number)}
           
         
     
       />
 
-      <Button title="Calcular" onPress={() => exibirIMC()}/>
-    
-<Text>{exibirIMC}</Text>
+      <Button title="Calcular" onPress={() => Calcular()}
+        
+      />
+
+  <Text>{resultado}</Text>
+  <Text>{IMC}</Text>
 
       <StatusBar style="auto" />
     </View>
