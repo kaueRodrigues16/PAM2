@@ -8,15 +8,19 @@ export default function Login() {
 
     return (
         <View style={styles.container}>
-            <Text>Bem-vindo ao app de saúde!!!</Text>
+            <View style={styles.Header}>
+                <Text style={styles.Titulo}>Login</Text> {/* Corrigido de 'Texte' para 'Text' */}
+            </View>
             
-            <Button
+            <Text style={styles.Apresentacao}>Bem-vindo ao app de saúde!!!</Text>
+            
+            <Button style={styles.Login}
                 title="Logar"
                 color="red"
                 onPress={() => navigation.navigate('Home')} // Navegar para a tela 'Home'
             />
             
-            <StatusBar style="auto" /> {}
+            <StatusBar style="auto" /> {/* Removido o '{}' extra */}
         </View>
     );
 }
