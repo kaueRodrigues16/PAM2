@@ -27,8 +27,12 @@ export default StyleSheet.create({
         paddingVertical: 60
     },
 
-    Login: {
-       
+    BotaoLogin: {
+        backgroundColor: '#007BFF',
+        backgroundColor: 'red', // Cor de fundo do botão
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5, // Opção para arredondar os cantos
     }
 })
 

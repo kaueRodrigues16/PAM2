@@ -1,22 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button } from 'react-native'; 
-import styles from './styles'; 
+import { Text, View, TouchableOpacity } from 'react-native';
+import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 
 export default function Home() {
-    const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
-    return (
-        <View style={styles.container}>
-            <Text>Página da Home</Text>
+  function handlePress() {
+    navigation.navigate('IMC');
+  }
 
-            <Button
-                title="IMC"
-                color="red"
-                onPress={() => navigation.navigate('IMC')} 
-            />
+  return (
+    <View style={styles.container}>
+      <Text>Página da Home</Text>
 
-            <StatusBar style="auto" /> {}
-        </View>
-    );
+      <TouchableOpacity style={styles.botaoIMC} onPress={handlePress}>
+        <Text style={styles.title}>Ir para IMC</Text>
+      </TouchableOpacity>
+
+      <StatusBar style="auto" />
+    </View>
+  );
 }

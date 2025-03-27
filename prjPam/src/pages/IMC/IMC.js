@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput } from 'react-native-web';
+import { Text, View } from 'react-native';
+import { TextInput,TouchableOpacity } from 'react-native-web';
+import styles from './ImcStyles';
 
 
 export default function App() {
@@ -46,27 +47,24 @@ export default function App() {
     <View style={styles.container}>
     
       <TextInput
-          placeholder={"Digite sua altura"}
-          style={{ borderWidth: 2, borderRadius:20, height: 40, width:"200px", margin:20}}
+         placeholder={"Digite sua altura"} style={styles.lbaltura}
+
           onChangeText={(Number) => setAltura(Number)}
       
       />
     
   
       <TextInput
-          placeholder={"Digite seu peso"}
-          style={{ borderWidth: 2, borderRadius:20, height: 40, width:"200px", margin:50}}
+          placeholder={"Digite seu peso"} style={styles.lbpeso}
           onChangeText={(Number) => setPeso(Number)}
           
         
     
       />
+      <TouchableOpacity style={styles.botaoCalcular} onPress={() => Calcular()}>
+        <Text style={styles.title}>Calcular</Text>
+      </TouchableOpacity>
 
-      <Button title="Calcular"
-      color="red"
-      onPress={() => Calcular()}
-        
-      />
 
   <Text>{resultado.toFixed(2)}</Text>
   <Text>{IMC}</Text>
@@ -76,11 +74,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+

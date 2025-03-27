@@ -13,10 +13,9 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} // Define login como a primeira tela a aparecer para o usuario, eh tipo o metodo main do java
-        />
+    <NavigationContainer >
+      <Stack.Navigator initialRouteName="Login" style={styles.navbar}>
+        <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="IMC" component={IMC}/>
       </Stack.Navigator>
@@ -32,4 +31,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  navbar: {
+    backgroundColor: "red",
+  }
 });
