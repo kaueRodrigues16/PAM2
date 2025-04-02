@@ -8,24 +8,34 @@ export default StyleSheet.create({
         justifyContent: 'center',
       },
 
-      botaoCalcular: {
+      botao: {
         padding: 15,
         backgroundColor: "white",
         alignContent: "center",
         justifyContent: "center",
-        width: "60%",
+        width: "45%",
         height:"8%",
         borderRadius: 10,
         borderWidth: 3,
         borderColor:"red",
+        gap: 10,
     },
-    title: {
+    textoBotao: {
         color: "red",
-        fontSize: 15,
+        fontSize: 10,
         fontWeight: "bold",
         textAlign: 'center',
 
     },
+
+    botoes: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: "space-between", 
+      width: "80%", 
+      marginTop: 20,
+      gap: 15, 
+  },
 
     lbpeso: {
       borderWidth: 3, 

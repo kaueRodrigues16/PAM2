@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Text, View } from 'react-native';
-import { TextInput,TouchableOpacity } from 'react-native-web';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import styles from './ImcStyles';
 
 
@@ -9,12 +8,14 @@ export default function App() {
   const [ Altura , setAltura] = useState();
   const [ peso , setPeso ]  = useState();
   const [ IMC , setIMC ]  = useState();
-  const [ exibirIMC, setexibirIMC] = useState();
   const [ resultado, setResultado] = useState(0);
 
   const Calcular = () => {
-
-    setResultado(parseFloat(peso)/(parseFloat(Altura)*parseFloat(Altura)))
+    const AlturaNum = parseFloat(Altura)
+    const PesoNum = parseFloat(peso)
+    const IMCCalculado = PesoNum / (AlturaNum * AlturaNum);
+    setResultado(IMCCalculado);
+   
     
   
     if(resultado<18.5){
@@ -42,35 +43,52 @@ export default function App() {
 
   }
 
+  const Limpar = () => {
+    setAltura('');
+    setPeso('');
+    setResultado(0);
+    setIMC('');
+  };
+
 
   return (
     <View style={styles.container}>
     
       <TextInput
          placeholder={"Digite sua altura"} style={styles.lbaltura}
-
-          onChangeText={(Number) => setAltura(Number)}
-      
+         keyboardType="numeric"
+         onChangeText={(text) => setAltura(text.replace(',', '.'))} 
       />
     
   
       <TextInput
           placeholder={"Digite seu peso"} style={styles.lbpeso}
-          onChangeText={(Number) => setPeso(Number)}
-          
+          keyboardType="numeric"
+          onChangeText={(text) => setPeso(text.replace(',', '.'))}
         
     
       />
-      <TouchableOpacity style={styles.botaoCalcular} onPress={() => Calcular()}>
-        <Text style={styles.title}>Calcular</Text>
-      </TouchableOpacity>
+      
 
+    <Text>{resultado.toFixed(2)}</Text>
+    <Text>{IMC}</Text>
+    
+    <View style={styles.botoes}>
+     <TouchableOpacity style={styles.botao} onPress={() => Calcular()}>
+       <Text style={styles.textoBotao}>Calcular</Text>
+     </TouchableOpacity>
 
-  <Text>{resultado.toFixed(2)}</Text>
-  <Text>{IMC}</Text>
+     <TouchableOpacity style={styles.botao} onPress={Limpar}>
+       <Text style={styles.textoBotao}>Limpar</Text>
+     </TouchableOpacity>
+   </View>
 
-      <StatusBar style="auto" />
-    </View>
+   <StatusBar style="auto" />
+  </View>
+      
+
+     
+    
   );
 }
 
