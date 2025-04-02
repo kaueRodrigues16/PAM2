@@ -1,29 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button } from 'react-native'; // Importando o Button
-import styles from './LoginStyles'; // Verifique se o caminho está correto
+import { Text, View, TouchableOpacity } from 'react-native';
+import styles from './LoginStyles';
 import { useNavigation } from '@react-navigation/native';
 
-
 export default function Login() {
-    const navigation = useNavigation(); // Hook de navegação
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
-            <View style={styles.Header}>
-                <Text style={styles.Titulo}>Login</Text> {/* Corrigido de 'Texte' para 'Text' */}
+            <View style={styles.Titulo}>
+                <Text style={styles.Titulo}>BioVibe</Text>
+                <Text style={styles.Apresentacao}>Bem-vindo ao app de saúde!!!</Text>
             </View>
             
-            <Text style={styles.Apresentacao}>Bem-vindo ao app de saúde!!!</Text>
-            
-            <Button style={styles.Lxogin}
-                title="Logar"
-                color="red"
-                onPress={() => navigation.navigate('Home')} // Navegar para a tela 'Home'
-            />
+           
+            <View style={styles.corpo}>
+                <TouchableOpacity style={styles.BotaoLogin} onPress={() => navigation.navigate('Home')}>
+                    <Text style={styles.tituloLogin}>Logar</Text>
+                </TouchableOpacity>
+            </View>
 
+            <Text style={styles.txCadastro}>Não tem uma conta?
+            <Text style={styles.CadastroLink} onPress={() => navigation.navigate('Cadastro')}> Cadastre agora!</Text>
+            </Text>
             
-            
-            <StatusBar style="auto" /> {/* Removido o '{}' extra */}
+                    
+            <StatusBar style="auto" />
         </View>
     );
 }

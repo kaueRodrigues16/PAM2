@@ -1,4 +1,5 @@
 import {StyleSheet } from 'react-native';
+import color from '../../Elementos/Visual/Paleta'
 
 export default StyleSheet.create({
     container:{
@@ -10,17 +11,17 @@ export default StyleSheet.create({
 
     botaoIMC: {
         padding: 10,
-        backgroundColor: "white",
+        backgroundColor: color.Segundaria,
         alignContent: "center",
         justifyContent: "center",
         width: "90%",
         borderRadius: 12,
         borderWidth: 3,
-        borderColor:"red",
+        borderColor: color.PrincipaItens,
         position: "absolute"
     },
     title: {
-        color: "red",
+        color: color.PrincipaItens,
         fontSize: 20,
         fontWeight: "bold",
         textAlign: 'center',

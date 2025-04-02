@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import color from '../../Elementos/Visual/Paleta'
 
 export default StyleSheet.create({
     header: {
@@ -13,7 +14,7 @@ export default StyleSheet.create({
     },
 
     Titulo: {
-        color: 'red', // Cor do texto
+        color: color.Principal, // Cor do texto
         fontSize: 25,
         fontWeight: 'bold',
         flex: 1, // O título ocupa o máximo de espaço possível
@@ -28,11 +29,31 @@ export default StyleSheet.create({
     },
 
     BotaoLogin: {
-        backgroundColor: '#007BFF',
-        backgroundColor: 'red', // Cor de fundo do botão
-        justifyContent: 'center',
+        backgroundColor: color.PrincipaItens,
+        padding: 10,
         alignItems: 'center',
-        borderRadius: 5, // Opção para arredondar os cantos
-    }
+    },
+
+    corpo: {
+        paddingHorizontal: 16,
+    },
+
+    tituloLogin: {
+        color: color.Segundaria,
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: 'center',
+    },
+
+    txCadastro: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
+    CadastroLink: {
+        color: 'blue', 
+        textDecorationLine: 'underline',
+    },
+
 })
 

@@ -20,6 +20,8 @@ export default function Home() {
         <Text style={styles.title}>Ir para IMC</Text>
       </TouchableOpacity>
 
+      
+
       <StatusBar style="auto" />
     </View>
   );
