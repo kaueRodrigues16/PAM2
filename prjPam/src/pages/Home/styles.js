@@ -12,14 +12,27 @@ export default StyleSheet.create({
     botaoIMC: {
         padding: 10,
         backgroundColor: color.Segundaria,
-        alignContent: "center",
-        justifyContent: "center",
-        width: "90%",
+        alignItems: 'center', // Ajustando alinhamento para o conteúdo do botão
+        justifyContent: 'center', // Ajustando alinhamento para o conteúdo do botão
+        width: '90%',
         borderRadius: 12,
         borderWidth: 3,
         borderColor: color.PrincipaItens,
-        position: "absolute"
-    },
+        marginBottom: 10, // Espaço entre os botões
+      },
+    
+      botaoVacinas: {
+        padding: 10,
+        backgroundColor: color.Segundaria,
+        alignItems: 'center', // Ajustando alinhamento para o conteúdo do botão
+        justifyContent: 'center', // Ajustando alinhamento para o conteúdo do botão
+        width: '90%',
+        borderRadius: 12,
+        borderWidth: 3,
+        borderColor: color.PrincipaItens,
+        marginBottom: 40, // Espaço entre os botões
+      },
+
     title: {
         color: color.PrincipaItens,
         fontSize: 20,

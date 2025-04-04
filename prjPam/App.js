@@ -9,6 +9,7 @@ import Login from './src/pages/Login/Login';
 import Home from './src/pages/Home/Home';
 import IMC from './src/pages/IMC/IMC';
 import Cadastro from './src/pages/Cadastro/Cadastro';
+import Vacinas from './src/pages/Vacinas/Vacina';
 
 // Cria o stack navigator
 const Stack = createNativeStackNavigator();
@@ -30,7 +31,7 @@ export default function App() {
 
         headerTitle: () => (
           <Image source={require('./src/Elementos/Images/BioVibeLogo.png')}
-          style={{ width: 150, height: 63 }}
+          style={{ width: 150, height: 60 }}
            />
         ),
       }}>
@@ -38,6 +39,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="IMC" component={IMC} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="Vacinas" component={Vacinas} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
