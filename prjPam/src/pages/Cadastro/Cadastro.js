@@ -1,8 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Text, TextInput, View, TouchableOpacity } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import styles from './CadastroStyles';
+
+
+const RadioButton = ({ selected, onPress, label }) => {
+    return (
+      <TouchableOpacity style={styles.radioContainer} onPress={onPress}>
+        <View
+          style={[
+            styles.radioCircle,
+            selected ? styles.selectedRadio : styles.unselectedRadio,
+          ]}
+        >
+          {selected && <View style={styles.selectedInnerCircle} />}
+        </View>
+        <Text style={styles.radioLabel}>{label}</Text>
+      </TouchableOpacity>
+    );
+  };
+
 
 export default function Cadastro() {
     const [nome, setNome] = useState('');
@@ -19,7 +36,6 @@ export default function Cadastro() {
             </View>
 
             <View style={styles.Formulario}>
-                <Text style={styles.Cadastro}>Cadastrar</Text>
                 <TextInput
                     style={styles.campo}
                     value={nome}
@@ -39,17 +55,25 @@ export default function Cadastro() {
                     secureTextEntry
                     onChangeText={(text) => setSenha(text)}
                 />
-                <Picker
-                    selectedValue={genero}
-                    style={styles.pcGenero}
-                    onValueChange={(itemValue) => setGenero(itemValue)} 
-                >
-                    <Picker.Item label="Masculino" value="masculino" />
-                    <Picker.Item label="Feminino" value="feminino" />
-                    <Picker.Item label="Outro" value="outro" />  {/* Corrigindo a label */}
-                
-                </Picker>
 
+                <View styles={styles.RadioGenero}>
+                    <RadioButton
+                        selected={genero === 'Masculino'}
+                        onPress={() => setGenero('Masculino')}
+                        label="Masculino"
+                    />
+                    <RadioButton
+                        selected={genero === 'Feminino'}
+                        onPress={() => setGenero('Feminino')}
+                        label="Feminino"
+                    />
+                    <RadioButton
+                        selected={genero === 'Outro'}
+                        onPress={() => setGenero('Outro')}
+                        label="Outro"
+                    />
+                </View>
+                
                 <Text style={styles.Opicional}>Opincional</Text>
                 
                 <TextInput
