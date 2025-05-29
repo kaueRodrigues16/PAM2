@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login"
+      <Stack.Navigator initialRouteName="Cadastro"
       screenOptions={{
         headerStyle: {
           backgroundColor:  color.Principal, // Cor do fundo da navbar

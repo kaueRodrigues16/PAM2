@@ -1,0 +1,15 @@
+CREATE DATABASE bdSaude;
+
+USE bdSaude;
+
+CREATE TABLE tbUsuario (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY
+    ,nomeUsuario VARCHAR(100) 
+    ,senhaUsuario VARCHAR(16) 
+    ,emailUsuario VARCHAR(100) 
+    ,dataNascUsuario DATE
+    ,generoUsuario VARCHAR(16) 
+    ,fotoUsuario VARCHAR(255),
+    ,alturaUsuario DECIMAL(5,2),
+    ,pesoUsuario DECIMAL(5,2)
+);
