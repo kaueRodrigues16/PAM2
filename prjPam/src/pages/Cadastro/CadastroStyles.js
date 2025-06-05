@@ -19,7 +19,6 @@ export default StyleSheet.create({
         paddingTop: 30,
     },
 
-
     campo: {
         height: 50,
         width: '120%',

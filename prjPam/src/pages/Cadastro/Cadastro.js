@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Text, TextInput, View, TouchableOpacity, Alert, ScrollView, Button } from 'react-native';
-// import { Calendar } from 'react-native-calendars'; // Calendário comentado
+import { Text, TextInput, View, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import axios from 'axios';
 import styles from './CadastroStyles';
 
@@ -27,49 +26,17 @@ export default function Cadastro() {
   const [altura, setAltura] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
 
-  /* Código do calendário comentado conforme solicitado
-  const [selectedDate, setSelectedDate] = useState('');
-  const [dateInput, setDateInput] = useState('');
-  const [inputValue, setInputValue] = useState('');
-  const [savedData, setSavedData] = useState({});
-  const [showCalendar, setShowCalendar] = useState(false);
-
-  const handleDayPress = day => {
-    setSelectedDate(day.dateString);
-    setDateInput(day.dateString);
-    setInputValue(savedData[day.dateString] || '');
-  };
-
-  const handleDateInputChange = text => {
-    setDateInput(text);
-    if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
-      setSelectedDate(text);
-      setInputValue(savedData[text] || '');
-    }
-  };
-
-  const handleSave = () => {
-    if (!selectedDate) {
-      return;
-    }
-    setSavedData(prev => ({
-      ...prev,
-      [selectedDate]: inputValue
-    }));
-    setInputValue('');
-  };
-  */
-
   const salvarDados = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/usuarios', {
-        nome,
-        email,
-        password: senha,
-        data_nascimento: dataNascimento,
-        genero,
-        altura: altura || null,
-        peso: peso || null
+        nomeUsuario: nome,
+        emailUsuario: email,
+        senhaUsuario: senha,
+        dataNascUsuario: dataNascimento,
+        generoUsuario: genero,
+        alturaUsuario: altura || null,
+        pesoUsuario: peso || null,
+        fotoUsuario: null
       }, {
         headers: {
           'Accept': 'application/json',
@@ -77,10 +44,9 @@ export default function Cadastro() {
           'X-Requested-With': 'XMLHttpRequest'
         }
       });
-
+  
       Alert.alert('Sucesso!', 'Dados salvos com sucesso');
-
-      // Limpar os campos após sucesso
+  
       setNome('');
       setEmail('');
       setSenha('');
@@ -88,16 +54,16 @@ export default function Cadastro() {
       setPeso('');
       setAltura('');
       setDataNascimento('');
-
+  
     } catch (error) {
       console.error('Detalhes do erro:', {
         request: error.request,
         response: error.response?.data,
         message: error.message
       });
-
+  
       let errorMessage = 'Não foi possível cadastrar o usuário.';
-
+  
       if (error.response) {
         if (error.response.data.errors) {
           errorMessage = Object.values(error.response.data.errors).join('\n');
@@ -105,11 +71,11 @@ export default function Cadastro() {
           errorMessage = error.response.data.message;
         }
       }
-
+  
       Alert.alert('Erro', errorMessage);
     }
   };
-
+  
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.Titulo}>
@@ -147,49 +113,6 @@ export default function Cadastro() {
           value={dataNascimento}
           onChangeText={setDataNascimento}
         />
-
-        {/* Seção do calendário comentada
-        <TouchableOpacity 
-          onPress={() => setShowCalendar(!showCalendar)} 
-          style={styles.BotaoMostrarCalendario}
-        >
-          <Text style={styles.TextoBotao}>
-            {showCalendar ? 'Esconder Calendário' : 'Mostrar Calendário'}
-          </Text>
-        </TouchableOpacity>
-
-        {showCalendar && (
-          <Calendar
-            onDayPress={handleDayPress}
-            markedDates={{
-              [selectedDate]: {
-                selected: true,
-                marked: !!savedData[selectedDate],
-                dotColor: 'blue',
-                selectedColor: '#00adf5'
-              }
-            }}
-            theme={{
-              selectedDayBackgroundColor: '#00adf5',
-              todayTextColor: '#00adf5',
-              arrowColor: 'orange'
-            }}
-          />
-        )}
-
-        {selectedDate ? (
-          <View style={styles.inputContainer}>
-            <Text>Data selecionada: {selectedDate}</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Digite um valor"
-              value={inputValue}
-              onChangeText={setInputValue}
-            />
-            <Button title="Salvar" onPress={handleSave} />
-          </View>
-        ) : null}
-        */}
 
         <Text style={styles.label}>Gênero*</Text>
         <View style={styles.RadioGenero}>

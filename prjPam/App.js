@@ -5,11 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import color from './src/Elementos/Visual/Paleta'
 
 // Importando os caminhos 
-import Login from './src/pages/Login/Login';
+import Inicial from './src/pages/Inicial/Inicial';
 import Home from './src/pages/Home/Home';
 import IMC from './src/pages/IMC/IMC';
 import Cadastro from './src/pages/Cadastro/Cadastro';
 import Vacinas from './src/pages/Vacinas/Vacina';
+import Login from './src/pages/Login/Login'
 
 // Cria o stack navigator
 const Stack = createNativeStackNavigator();
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Cadastro"
+      <Stack.Navigator initialRouteName="Inicial"
       screenOptions={{
         headerStyle: {
           backgroundColor:  color.Principal, // Cor do fundo da navbar
@@ -35,11 +36,12 @@ export default function App() {
            />
         ),
       }}>
-        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Inicial" component={Inicial}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="IMC" component={IMC} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Vacinas" component={Vacinas} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

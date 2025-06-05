@@ -1,31 +1,48 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Text, TextInput, View, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './LoginStyles';
-import { useNavigation } from '@react-navigation/native';
 
-export default function Login() {
-    const navigation = useNavigation();
+export default function App() {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-    return (
-        <View style={styles.container}>
-            <View style={styles.Titulo}>
-                <Text style={styles.Titulo}>BioVibe</Text>
-                <Text style={styles.Apresentacao}>Bem-vindo ao app de saúde!!!</Text>
-            </View>
-            
-           
-            <View style={styles.corpo}>
-                <TouchableOpacity style={styles.BotaoLogin} onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.tituloLogin}>Logar</Text>
-                </TouchableOpacity>
-            </View>
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.Formulario}>
+        <TextInput
+          style={styles.campo}
+          value={nome}
+          placeholder="Digite seu nome*"
+          onChangeText={setNome}
+        />
 
-            <Text style={styles.txCadastro}>Não tem uma conta?
-            <Text style={styles.CadastroLink} onPress={() => navigation.navigate('Cadastro')}> Cadastre agora!</Text>
-            </Text>
-            
-                    
-            <StatusBar style="auto" />
-        </View>
-    );
+        <TextInput
+          style={styles.campo}
+          value={email}
+          placeholder="Digite um email*"
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+
+        <TextInput
+          style={styles.campo}
+          value={senha}
+          placeholder="Digite uma senha*"
+          secureTextEntry
+          onChangeText={setSenha}
+        />
+
+        <TouchableOpacity
+          style={styles.BotaoCadastrar}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.tituloLogar}>Cadastrar</Text>
+        </TouchableOpacity>
+      </View>
+      <StatusBar style="auto" />
+    </ScrollView>
+  );
 }
